@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Cloudpos</string>
+
+    <string name="main_home">首页</string>
+    <string name="main_shop">商城</string>
+    <string name="main_service">服务</string>
+    <string name="main_mine">我的</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home_car_service">车务服务</string>
+    <string name="home_recommend_service">推荐服务</string>
+    <string name="home_recommend_good">推荐商品</string>
+    <string name="item_ins">一键投保</string>
+    <string name="login_co_name">云码通保险云服务平台</string>
+    <string name="login_acc">手机号</string>
+    <string name="login_passwd">密码</string>
+
+    <string name="btn_login">登录</string>
+    <string name="tv_forget_passwd">忘记密码</string>
+</resources>
