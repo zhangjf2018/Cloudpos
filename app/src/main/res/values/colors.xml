@@ -129,4 +129,5 @@
     <color name="groupImgBg">#ffe3E3E3</color>
 
     <color name="colorBlue">#FF3491E8</color>
+    <color name="bg_gray">#FFF5F5F5</color>
 </resources>

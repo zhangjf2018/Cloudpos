@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_account_check"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/about_appbar"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+    <include layout="@layout/top_nav_include" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/toolbar_theme">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/about_toolbar"
+        android:background="@color/white">
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorBlue">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="账户验证"
-                android:textColor="@color/white"
-                android:textSize="26sp"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:hint="@string/tvInputAcc"
+            android:background="@null"
+            android:textColorHint="@color/alpaha_gray"/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

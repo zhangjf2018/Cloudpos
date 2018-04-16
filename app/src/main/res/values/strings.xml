@@ -14,9 +14,10 @@
     <string name="home_recommend_good">推荐商品</string>
     <string name="item_ins">一键投保</string>
     <string name="login_co_name">云码通保险云服务平台</string>
-    <string name="login_acc">手机号</string>
+    <string name="login_acc">账户</string>
     <string name="login_passwd">密码</string>
 
     <string name="btn_login">登录</string>
     <string name="tv_forget_passwd">忘记密码</string>
+    <string name="tvInputAcc">请输入您的账户</string>
 </resources>

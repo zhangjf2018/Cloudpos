@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".view.AccountCheckActivity" android:parentActivityName=".view.LaunchActivity"></activity>
+        <activity android:name=".view.AccountCheckActivity" />
+        <activity android:name=".view.PhoneCheckActivity"></activity>
     </application>
 
 </manifest>
