@@ -18,6 +18,12 @@
     <string name="login_passwd">密码</string>
 
     <string name="btn_login">登录</string>
+    <string name="btn_next_step">下一步</string>
     <string name="tv_forget_passwd">忘记密码</string>
     <string name="tvInputAcc">请输入您的账户</string>
+    <string name="tvGetSMS">获取验证码</string>
+    <string name="et_phone_input">请输入手机号</string>
+    <string name="et_sms_input">请输入短信验证码</string>
+    <string name="et_password_input">请设置新密码</string>
+    <string name="btn_finish">完成</string>
 </resources>

@@ -47,13 +47,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/login_acc"
-                android:background="@null"
                 android:inputType="number"
-                android:textSize="18sp"
                 android:maxLength="15"
                 android:maxLines="1"
-                android:textCursorDrawable="@color/black"
-                android:textColorHint="@color/gray"/>
+                style="@style/edittext_style"/>
         </LinearLayout>
 
         <LinearLayout
@@ -75,13 +72,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/login_passwd"
-                android:background="@null"
-                android:textSize="18sp"
                 android:inputType="textPassword"
                 android:maxLength="15"
                 android:maxLines="1"
-                android:textCursorDrawable="@color/black"
-                android:textColorHint="@color/gray"/>
+                style="@style/edittext_style"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -100,15 +95,13 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_login"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="53dp"
-            android:background="@drawable/btn_selector"
-            android:textSize="25sp"
-            android:textColor="@color/white"
-            android:text="@string/btn_login"/>
+            android:text="@string/btn_login"
+            style="@style/button_style"/>
     </LinearLayout>
 
 </LinearLayout>

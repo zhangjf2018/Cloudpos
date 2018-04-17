@@ -4,6 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.ymt.cloudpos.view.PhoneCheckActivity">
+    <include layout="@layout/top_nav_include" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="7">
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:paddingLeft="20dp"
+                android:maxLength="11"
+                android:inputType="number"
+                android:hint="@string/et_phone_input"
+                style="@style/edittext_style"/>
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_shape_green"
+                android:text="@string/tvGetSMS"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_height="1dp"
+            android:background="@color/alpaha_gray"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:paddingLeft="20dp"
+            android:inputType="number"
+            android:maxLength="6"
+            android:hint="@string/et_sms_input"
+            style="@style/edittext_style"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_marginTop="20dp"
+        style="@style/button_style"
+        android:text="@string/btn_next_step"/>
 
 </LinearLayout>

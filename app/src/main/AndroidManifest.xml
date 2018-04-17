@@ -21,7 +21,9 @@
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".view.AccountCheckActivity" />
-        <activity android:name=".view.PhoneCheckActivity"></activity>
+        <activity android:name=".view.PhoneCheckActivity" />
+        <activity android:name=".view.ModifyPasswordActivity" />
+        <activity android:name=".view.RentDepositActivity"></activity>
     </application>
 
 </manifest>

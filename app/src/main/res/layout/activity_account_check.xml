@@ -8,17 +8,21 @@
     <include layout="@layout/top_nav_include" />
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
             android:hint="@string/tvInputAcc"
-            android:background="@null"
-            android:textColorHint="@color/alpaha_gray"/>
-
+            style="@style/edittext_style"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_marginTop="20dp"
+        style="@style/button_style"
+        android:text="@string/btn_next_step"/>
 
 </LinearLayout>

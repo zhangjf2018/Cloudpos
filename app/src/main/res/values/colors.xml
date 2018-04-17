@@ -130,4 +130,8 @@
 
     <color name="colorBlue">#FF3491E8</color>
     <color name="bg_gray">#FFF5F5F5</color>
+    <color name="btn_bg_green">#FF5AD485</color>
+
+    <color name="bg_orig">#FFFFA633</color>
+    <color name="bg_line">#FF7B5018</color>
 </resources>
