@@ -50,6 +50,7 @@
     <!-- 透明-->
     <color name="translucent">#60000000</color>
     <color name="alpaha_gray">#FFEFEFEF</color>
+    <color name="alpaha_t_gray">#80EFEFEF</color>
 
     <!-- 意见反馈背景颜色-->
 

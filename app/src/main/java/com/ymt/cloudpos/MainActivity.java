@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(!LoginStatus.isLogin(this)){
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            //startActivity(intent);
         }
         initTab();
         initFragment();
