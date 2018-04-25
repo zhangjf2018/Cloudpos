@@ -23,7 +23,8 @@
         <activity android:name=".view.AccountCheckActivity" />
         <activity android:name=".view.PhoneCheckActivity" />
         <activity android:name=".view.ModifyPasswordActivity" />
-        <activity android:name=".view.RentDepositActivity"></activity>
+        <activity android:name=".view.RentDepositActivity" />
+        <activity android:name=".view.EffectInsuranceActivity" android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

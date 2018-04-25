@@ -12,6 +12,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="8dp"
+    android:background="@drawable/item_selector"
     >
     <ImageView
         android:layout_width="40dp"

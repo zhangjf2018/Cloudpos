@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ExpandableListView
+        android:id="@+id/expandablelistview"
+        android:groupIndicator="@null"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        android:dividerHeight="8dp"
+        android:childDivider="@drawable/line_gray_shape"
+        android:divider="@color/alpaha_gray"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_subOrder"
+        android:layout_marginTop="20dp"
+        style="@style/button_style"
+        android:text="@string/btn_sub_order"/>
+
+</LinearLayout>

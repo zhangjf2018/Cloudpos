@@ -1,5 +1,6 @@
 package com.ymt.cloudpos.view;
 
+import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableArrayList;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ymt.cloudpos.R;
@@ -21,6 +23,7 @@ import com.ymt.cloudpos.adapter.CarServiceAdapter;
 import com.ymt.cloudpos.adapter.RecommendGoodAdapter;
 import com.ymt.cloudpos.adapter.RecommendServiceAdapter;
 import com.ymt.cloudpos.core.BaseFragment;
+import com.ymt.cloudpos.core.adaper.RecyclerBaseAdapter;
 import com.ymt.cloudpos.model.CarServiceModel;
 import com.ymt.cloudpos.model.RecommendGoodModel;
 import com.ymt.cloudpos.model.RecommendServiceModel;
@@ -53,7 +56,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initBanner(view);
@@ -64,6 +67,16 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         mCarServiceAdapter = new CarServiceAdapter(mCarServiceModelList);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         recyclerView.setAdapter(mCarServiceAdapter);
+        mCarServiceAdapter.setMyItemClickListener(new RecyclerBaseAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+               // Toast.makeText(getContext(),""+position, Toast.LENGTH_SHORT).show();
+                CarServiceModel carServiceModel = mCarServiceModelList.get(position);
+                Intent intent = new Intent();
+                intent.setClass(getContext(), carServiceModel.getClassName());
+                startActivity(intent);
+            }
+        });
 
         setRecServiceData(view);
         setRecGoodData(view);
@@ -72,7 +85,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     }
 
     private void setData(){
-        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png2, "一键投保"));
+        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png2, "一键投保", EffectInsuranceActivity.class));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_xubao, "一键续保"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_lipei, "一键理赔"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_order, "订单跟进"));

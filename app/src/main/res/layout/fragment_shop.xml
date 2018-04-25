@@ -16,7 +16,6 @@
             />
     </LinearLayout>
 
-
     <com.ymt.cloudpos.core.wegit.NoScrollViewPager
         android:id="@+id/top_viewPager"
         android:layout_width="match_parent"

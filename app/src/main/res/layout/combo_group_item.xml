@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/fl_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="机动车损失保险"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/ll_subName"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:text="("/>
+            <TextView
+                android:id="@+id/tv_subName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:text="司机"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:text=")"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.ymt.cloudpos.core.wegit.SpinnerEditText
+        android:id="@+id/set_dropList"
+        android:layout_width="70dp"
+        android:maxLines="1"
+        android:layout_height="40dp"
+        android:lines="1"
+        android:singleLine="true"
+        android:textCursorDrawable="@color/black"
+        android:background="@drawable/bg_high_edittext"
+        android:layout_toLeftOf="@+id/tv_yuan"
+        android:layout_marginRight="3dp"/>
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/tv_yuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="元"
+        android:textSize="18sp"
+        android:layout_toLeftOf="@+id/cb_isCheck"
+        android:layout_marginRight="8dp"
+        />
+
+    <CheckBox
+        android:layout_toLeftOf="@+id/tv_select"
+        android:id="@+id/cb_isCheck"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/checkbox_selector_re"
+        android:paddingLeft="3dp"
+        android:button="@null"/>
+
+    <TextView
+        android:layout_toLeftOf="@+id/switch_button"
+        android:id="@+id/tv_select"
+        android:paddingLeft="3dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不计免赔"
+        android:textSize="18sp"
+        android:paddingRight="8dp"
+        />
+
+    <com.suke.widget.SwitchButton
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/switch_button"
+        android:layout_width="50dp"
+        android:layout_height="30dp"/>
+
+    <!--<com.ymt.cloudpos.core.wegit.spinner.NiceSpinner-->
+        <!--android:id="@+id/nice_spinner"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:background="@drawable/rectangle_shape"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_toRightOf="@id/child_name"-->
+        <!--/>-->
+
+</RelativeLayout>

@@ -9,8 +9,15 @@ package com.ymt.cloudpos.model;
 public class CarServiceModel {
     private int resImgId;
     private String title;
+    private Class className;
 
     public CarServiceModel() {
+    }
+
+    public CarServiceModel(int resImgId, String title, Class className) {
+        this.resImgId = resImgId;
+        this.title = title;
+        this.className = className;
     }
 
     public CarServiceModel(int resImgId, String title) {
@@ -32,5 +39,13 @@ public class CarServiceModel {
 
     public void setResImgId(int resImgId) {
         this.resImgId = resImgId;
+    }
+
+    public Class getClassName() {
+        return className;
+    }
+
+    public void setClassName(Class className) {
+        this.className = className;
     }
 }

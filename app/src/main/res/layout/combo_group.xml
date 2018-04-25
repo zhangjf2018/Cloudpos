@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_centerVertical="true"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_pro"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/b1"/>
+    <TextView
+        android:paddingLeft="20dp"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:textSize="18sp"
+        android:layout_toRightOf="@+id/iv_pro"
+        android:text="交强险"
+        android:maxLines="1"/>
+    <!--<TextView-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:id="@+id/group_number"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:textSize="15sp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:text="20"/>-->
+</RelativeLayout>
