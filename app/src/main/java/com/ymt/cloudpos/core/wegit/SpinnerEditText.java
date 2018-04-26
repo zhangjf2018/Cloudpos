@@ -1,15 +1,11 @@
 package com.ymt.cloudpos.core.wegit;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -100,13 +96,9 @@ public class SpinnerEditText<T> extends AppCompatEditText {
         maxHeight = dp2px(context, 120);
         childHeight = dp2px(context, 40);
         setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);//设置字体大小
-
-
         this.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
-
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-
 //                showPopWindow();
                 return false;
             }
@@ -118,9 +110,7 @@ public class SpinnerEditText<T> extends AppCompatEditText {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
-
             }
-
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 return false;
@@ -155,27 +145,18 @@ public class SpinnerEditText<T> extends AppCompatEditText {
             public void onFocusChange(View v, boolean hasFocus) {
 
                 if (popupWindow != null && hasFocus) {
-                  // betterShow(getText().toString(), 250);
+                   //betterShow(getText().toString(), 250);
                 }
 
                 for (OnFocusChangeListener onFocusChangeListener : onFocusChangeListenerList) {
-                  //  onFocusChangeListener.onFocusChange(v, hasFocus);
+                   // onFocusChangeListener.onFocusChange(v, hasFocus);
                 }
             }
         });
 
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (popupWindow != null && isFocused()) {
-                   betterShow(getText().toString(), 250);
-                } else {
-                    dismissPopupWindow();
-                }
-            }
-        });
+    }
 
-
+    public void initRithDrawableListener(){
         setRightCompoundDrawable(R.mipmap.drop_arr);
         int paddingleft = dp2px(context, 5);
         int paddingright = dp2px(context, 5);
@@ -195,6 +176,16 @@ public class SpinnerEditText<T> extends AppCompatEditText {
                 } else {
                     requestFocus();
                     betterShow("", 0);
+                }
+            }
+        });
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (popupWindow != null && isFocused()) {
+                    betterShow(getText().toString(), 250);
+                } else {
+                    dismissPopupWindow();
                 }
             }
         });
@@ -229,8 +220,6 @@ public class SpinnerEditText<T> extends AppCompatEditText {
             }
         }
     };
-
-
 
     //优化过后的Popupwindo显示方法
     private void betterShow(String searchStr, long delayTime) {
@@ -496,14 +485,16 @@ public class SpinnerEditText<T> extends AppCompatEditText {
     private void initOrUpdateListPopupWindow() {
 
         if (popupWindow == null) {
-
             popupWindow = new PopupWindow(context);
+            popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.alphaAll));
             listView = new ListView(context);
+            listView.setDivider(ContextCompat.getDrawable(context, R.color.alpaha_gray));
+            listView.setDividerHeight(1);
             setVerticalScrollBarEnabled(true);
-          //  listView.setBackground(ContextCompat.getDrawable(context,R.drawable.graybox));
+            listView.setBackground(ContextCompat.getDrawable(context,R.drawable.popup_win_list_bg_shape));
             popupView = new FrameLayout(context);
-            popupView.setBackgroundColor(Color.GRAY);
             popupView.addView(listView);
+            //popupView.setBackground(ContextCompat.getDrawable(context, R.drawable.background_card));
             popupWindow.setContentView(popupView);
 //            popupView.setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
 
@@ -572,7 +563,6 @@ public class SpinnerEditText<T> extends AppCompatEditText {
                             popupWindow.dismiss();
                         }
                     });
-
                     return convertView;
                 }
             };
@@ -586,7 +576,8 @@ public class SpinnerEditText<T> extends AppCompatEditText {
                     handler.sendEmptyMessageDelayed(4, 100);
                 }
             });
-            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+           // popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+           // popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.graybox));
             popupWindow.setAnimationStyle(R.style.AnimationFromButtom);
             popupWindow.setOutsideTouchable(true);
             popupWindow.setFocusable(false);
@@ -661,15 +652,10 @@ public class SpinnerEditText<T> extends AppCompatEditText {
             popupWindow.dismiss();
     }
 
-    //------------------------------初始化Popupwindow ----------------------------
-    /**
-     * 根据手机的分辨率从 DP 的单位 转成为PX(像素)
-     */
     public static int dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
-
     //-----------设置自动判断Popupwindow显示类型---------------------
     //手动设置显示类型 自动判断显示类型失效
     public void setShowType(int showType) {

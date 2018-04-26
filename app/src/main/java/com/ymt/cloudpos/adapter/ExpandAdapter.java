@@ -4,18 +4,21 @@ import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.suke.widget.SwitchButton;
 import com.ymt.cloudpos.R;
 import com.ymt.cloudpos.core.wegit.SpinnerEditText;
 import com.ymt.cloudpos.core.wegit.spinner.NiceSpinner;
+import com.ymt.cloudpos.model.WholeComboItemSelectListModel;
 import com.ymt.cloudpos.model.WholeComboModel;
 import com.ymt.cloudpos.util.CommonUtil;
 
@@ -92,15 +95,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
         imageView.setImageDrawable(ContextCompat.getDrawable(context,groupList.get(groupPosition).getResImgId()));
         return convertView;
     }
-    public static class BaseBean {
-        public String Name;
-        public int Id;
 
-        @Override
-        public String toString() {
-            return Name;
-        }
-    }
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View view, ViewGroup viewGroup) {
         view = View.inflate(context, R.layout.combo_group_item, null);
@@ -108,7 +103,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
         //外层的分组名字
         textView.setText(groupList.get(groupPosition).getWholeComboItemModels().get(childPosition).getName());
 
-        final SpinnerEditText spinnerEditText = (SpinnerEditText<BaseBean>) view.findViewById(R.id.set_dropList);
+        final SpinnerEditText spinnerEditText = (SpinnerEditText<WholeComboItemSelectListModel>) view.findViewById(R.id.set_dropList);
         spinnerEditText.setRightCompoundDrawable(R.mipmap.drop_arr);
 
         spinnerEditText.setText(groupList.get(groupPosition).getWholeComboItemModels().get(childPosition).getPrice());
@@ -116,49 +111,38 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
         final int groupPositionf = groupPosition;
         final int childPositionf = childPosition;
 
-        spinnerEditText.setOnItemClickListener(new SpinnerEditText.OnItemClickListener<BaseBean>() {
+        spinnerEditText.setOnItemClickListener(new SpinnerEditText.OnItemClickListener<WholeComboItemSelectListModel>() {
             @Override
-            public void onItemClick(BaseBean baseBean, SpinnerEditText<BaseBean> var1, View var2, int position, long var4, String selectContent) {
+            public void onItemClick(WholeComboItemSelectListModel baseBean, SpinnerEditText<WholeComboItemSelectListModel> var1, View var2, int position, long var4, String selectContent) {
                // showToast("名称:" + baseBean.Name + " Id:" + baseBean.Id);
                 groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).setPrice(selectContent);
             }
         });
-
         spinnerEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).setPrice(spinnerEditText.getText().toString());
             }
         });
 
-        List<BaseBean> baseBeanList = new ArrayList<>();
-
-        for (int i = 0; i < 20; i++) {
-            BaseBean baseBean = new BaseBean();
-            baseBean.Name = "学生:" + i;
-            baseBean.Id = i;
-            baseBeanList.add(baseBean);
+        if (groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).getDataList() != null &&
+                groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).getDataList().size() > 0){
+            spinnerEditText.setList(groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).getDataList());
+            spinnerEditText.setFocusable(false);
+            spinnerEditText.initRithDrawableListener();
+        }else {
+            spinnerEditText.setRightNullCompoundDrawable();
         }
-
-        spinnerEditText.setList(baseBeanList);
-
-       // spinnerEditText.setRightNullCompoundDrawable();
 //        NiceSpinner niceSpinner = (NiceSpinner) view.findViewById(R.id.nice_spinner);
 //        List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
 //        niceSpinner.attachDataSource(dataset);
-//
-//
-//
+
 //        niceSpinner.hideArrow();
 //        niceSpinner.setEnabled(true);
 //        niceSpinner.setFocusable(true);
@@ -166,15 +150,25 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
      //   NiceSpinner niceSpinner = (NiceSpinner) view.findViewById(R.id.nice_spinner);
 
         SwitchButton switchButton = (SwitchButton) view.findViewById(R.id.switch_button);
+        final RelativeLayout rlComboGroupItem = (RelativeLayout) view.findViewById(R.id.rl_combo_group_item);
+        final CheckBox ck = (CheckBox) view.findViewById(R.id.cb_isCheck);
         switchButton.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                if(isChecked){
+                    rlComboGroupItem.setAlpha(1f);
+                    spinnerEditText.setClickable(true);
+                    ck.setClickable(true);
+                }else{
+                    rlComboGroupItem.setAlpha(0.5f);
+                    spinnerEditText.setClickable(false);
+                    ck.setClickable(false);
+                }
                 groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).setSwitchOn(isChecked);
             }
         });
         switchButton.setChecked(groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).isSwitchOn());
 
-        CheckBox ck = (CheckBox) view.findViewById(R.id.cb_isCheck);
         ck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -188,6 +182,14 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
                 !"".equals(groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).getSubName())){
             subName.setText(groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).getSubName());
             view.findViewById(R.id.ll_subName).setVisibility(View.VISIBLE);
+        }
+
+
+        if (!groupList.get(groupPositionf).getWholeComboItemModels().get(childPositionf).isSwitchOn()){
+            rlComboGroupItem.setAlpha(0.5f);
+            rlComboGroupItem.setClickable(false);
+            spinnerEditText.setClickable(false);
+            ck.setClickable(false);
         }
 
         return view;

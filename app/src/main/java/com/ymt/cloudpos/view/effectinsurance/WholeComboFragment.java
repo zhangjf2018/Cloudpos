@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 
 import com.ymt.cloudpos.R;
@@ -12,6 +13,7 @@ import com.ymt.cloudpos.adapter.ExpandAdapter;
 import com.ymt.cloudpos.adapter.MyAdapter;
 import com.ymt.cloudpos.core.BaseFragment;
 import com.ymt.cloudpos.model.WholeComboItemModel;
+import com.ymt.cloudpos.model.WholeComboItemSelectListModel;
 import com.ymt.cloudpos.model.WholeComboModel;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ import java.util.List;
  * desc  :
  */
 
-public class WholeComboFragment  extends BaseFragment {
+public class WholeComboFragment  extends BaseFragment implements View.OnClickListener {
 
     private String mTitle;
 
@@ -44,6 +46,9 @@ public class WholeComboFragment  extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_whole_combo_insurance, container, false);
         initView(view);
+
+        Button subOrder = (Button) view.findViewById(R.id.btn_subOrder);
+        subOrder.setOnClickListener(this);
         return view;
     }
 
@@ -51,24 +56,23 @@ public class WholeComboFragment  extends BaseFragment {
         expandableListView = (ExpandableListView) view.findViewById(R.id.expandablelistview);
         groupList = new ArrayList<>();
         childList = new ArrayList<>();
-        addData("幼稚园同学",new String[]{"周杰伦","江一燕 ","佟丽娅","高圆圆","刘诗诗","刘亦菲","angleBaby","张静初","张含韵",});
-        addData("小学同学",new String[]{"光头强","熊大","熊二","妙蛙种子","比卡丘","双蛋瓦斯","贪吃蛇"});
-        addData("初中同学",new String[]{"苍井空","小泽玛利亚","吉泽明步","波多野结衣","爱川美里菜","小川阿佐美","桃谷绘里香","泷泽萝拉","北原多香子","石川施恩惠","北条麻妃","麻仓优","羽田爱","保坂绘里"});
-        addData("高中同学",new String[]{"习近平","胡锦涛","江泽民","毛泽东","秦始皇","李世民","武则天","曹操","刘备","孙权"});
-        addData("大学同学",new String[]{"周杰伦","江一燕 ","佟丽娅","高圆圆","刘诗诗","刘亦菲","angleBaby","张静初","张含韵",});
-        addData("研究生同学",new String[]{"光头强","熊大","熊二","妙蛙种子","比卡丘","双蛋瓦斯","贪吃蛇"});
-        addData("博士同学",new String[]{"苍井空","小泽玛利亚","吉泽明步","波多野结衣","爱川美里菜","小川阿佐美","桃谷绘里香","泷泽萝拉","北原多香子","石川施恩惠","北条麻妃","麻仓优","羽田爱","保坂绘里"});
-        addData("教授同事",new String[]{"习近平","胡锦涛","江泽民","毛泽东","秦始皇","李世民","武则天","曹操","刘备","孙权"});
-        addData("众仙家名册",new String[]{"苍井空","小泽玛利亚","吉泽明步","波多野结衣","爱川美里菜","小川阿佐美","桃谷绘里香","泷泽萝拉","北原多香子","石川施恩惠","北条麻妃","麻仓优","羽田爱","保坂绘里","习近平","胡锦涛","江泽民","毛泽东","秦始皇","李世民","武则天","曹操","刘备","孙权"});
-//        myAdapter = new MyAdapter(getContext(),groupList,childList);
+     //        myAdapter = new MyAdapter(getContext(),groupList,childList);
 //        expandableListView.setAdapter(myAdapter);
+
+        List<WholeComboItemSelectListModel> pr = new ArrayList<>();
+        pr.add(new WholeComboItemSelectListModel("1W",""));
+        pr.add(new WholeComboItemSelectListModel("2W",""));
+        pr.add(new WholeComboItemSelectListModel("4W",""));
+        pr.add(new WholeComboItemSelectListModel("5W",""));
+        pr.add(new WholeComboItemSelectListModel("6W",""));
+        pr.add(new WholeComboItemSelectListModel("6W",""));
 
         List<WholeComboModel> glist = new ArrayList<>();
         List<WholeComboItemModel> l1 = new ArrayList<>();
         l1.add(new WholeComboItemModel("机动车损失险", null, "1", false , true));
         l1.add(new WholeComboItemModel("机动车第三者责任保险", null, "1", false , false));
-        l1.add(new WholeComboItemModel("机动车车上人员责任保险", "司机", "1", true , true));
-        l1.add(new WholeComboItemModel("机动车车上人员责任保险", "乘客", "1", false , true));
+        l1.add(new WholeComboItemModel("机动车车上人员责任保险", "司机",pr.get(0).getName(), true , true, pr));
+        l1.add(new WholeComboItemModel("机动车车上人员责任保险", "乘客", pr.get(0).getName(), false , true, pr));
         l1.add(new WholeComboItemModel("机动车全车盗窃保险", null, "1", false , true));
         l1.add(new WholeComboItemModel("玻璃单独破碎险", null, "1", false , true));
         l1.add(new WholeComboItemModel("车身划痕损失险", null, "1", false , true));
@@ -87,8 +91,8 @@ public class WholeComboFragment  extends BaseFragment {
         List<WholeComboItemModel> l3 = new ArrayList<>();
         l3.add(new WholeComboItemModel("机动车损失险", null, "1", false , true));
         l3.add(new WholeComboItemModel("机动车第三者责任保险", null, "1", false , false));
-        l3.add(new WholeComboItemModel("机动车车上人员责任保险", "司机", "1", true , true));
-        l3.add(new WholeComboItemModel("机动车车上人员责任保险", "乘客", "1", false , true));
+        l3.add(new WholeComboItemModel("机动车车上人员责任保险", "司机", pr.get(0).getName(), true , true,pr));
+        l3.add(new WholeComboItemModel("机动车车上人员责任保险", "乘客", pr.get(0).getName(), false , true,pr));
         l3.add(new WholeComboItemModel("机动车全车盗窃保险", null, "1", false , true));
         l3.add(new WholeComboItemModel("玻璃单独破碎险", null, "1", false , true));
         l3.add(new WholeComboItemModel("车身划痕损失险", null, "1", false , true));
@@ -111,5 +115,10 @@ public class WholeComboFragment  extends BaseFragment {
             childitem.add(friend[i]);
         }
         childList.add(childitem);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -7,8 +7,8 @@
     android:focusableInTouchMode="true"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
+    android:id="@+id/rl_combo_group_item"
     >
-
     <LinearLayout
         android:id="@+id/fl_t"
         android:layout_width="wrap_content"
