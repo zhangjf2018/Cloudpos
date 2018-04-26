@@ -4,7 +4,35 @@
     android:id="@+id/activity_select_insurance_agent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_gray"
     android:orientation="vertical"
-    tools:context="com.ymt.cloudpos.view.SelectInsuranceAgentActivity">
+    >
+    <include layout="@layout/top_nav_include" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:textSize="17sp"
+        android:text="@string/tv_most_select"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btn_subOrder"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        style="@style/button_style"
+        android:text="@string/btn_next_step"/>
 
 </LinearLayout>

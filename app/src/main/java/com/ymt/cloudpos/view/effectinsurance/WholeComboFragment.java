@@ -1,5 +1,6 @@
 package com.ymt.cloudpos.view.effectinsurance;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.ymt.cloudpos.core.BaseFragment;
 import com.ymt.cloudpos.model.WholeComboItemModel;
 import com.ymt.cloudpos.model.WholeComboItemSelectListModel;
 import com.ymt.cloudpos.model.WholeComboModel;
+import com.ymt.cloudpos.view.SelectInsuranceAgentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +78,7 @@ public class WholeComboFragment  extends BaseFragment implements View.OnClickLis
         l1.add(new WholeComboItemModel("机动车全车盗窃保险", null, "1", false , true));
         l1.add(new WholeComboItemModel("玻璃单独破碎险", null, "1", false , true));
         l1.add(new WholeComboItemModel("车身划痕损失险", null, "1", false , true));
-        glist.add(new WholeComboModel("幼稚园同学", R.mipmap.b1,l1));
+        glist.add(new WholeComboModel("交强险", R.mipmap.b1,l1));
 
         List<WholeComboItemModel> l2 = new ArrayList<>();
         l2.add(new WholeComboItemModel("机动车损失险", null, "1", false , true));
@@ -86,7 +88,7 @@ public class WholeComboFragment  extends BaseFragment implements View.OnClickLis
         l2.add(new WholeComboItemModel("机动车全车盗窃保险", null, "1", false , true));
         l2.add(new WholeComboItemModel("玻璃单独破碎险", null, "1", false , true));
         l2.add(new WholeComboItemModel("车身划痕损失险", null, "1", false , true));
-        glist.add(new WholeComboModel("幼稚园同学", R.mipmap.b2,l2));
+        glist.add(new WholeComboModel("车船税 （买交强险且未完税者必买）", R.mipmap.b2,l2));
 
         List<WholeComboItemModel> l3 = new ArrayList<>();
         l3.add(new WholeComboItemModel("机动车损失险", null, "1", false , true));
@@ -96,7 +98,7 @@ public class WholeComboFragment  extends BaseFragment implements View.OnClickLis
         l3.add(new WholeComboItemModel("机动车全车盗窃保险", null, "1", false , true));
         l3.add(new WholeComboItemModel("玻璃单独破碎险", null, "1", false , true));
         l3.add(new WholeComboItemModel("车身划痕损失险", null, "1", false , true));
-        glist.add(new WholeComboModel("教授同事", R.mipmap.b3,l3));
+        glist.add(new WholeComboModel("商业险", R.mipmap.b3,l3));
 
         ExpandAdapter expandAdapter = new ExpandAdapter(getContext(),glist);
         expandableListView.setAdapter(expandAdapter);
@@ -119,6 +121,8 @@ public class WholeComboFragment  extends BaseFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent();
+        intent.setClass(getContext(), SelectInsuranceAgentActivity.class);
+        startActivity(intent);
     }
 }
