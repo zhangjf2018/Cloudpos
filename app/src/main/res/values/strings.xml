@@ -29,4 +29,6 @@
     <string name="et_password_input">请设置新密码</string>
     <string name="btn_finish">完成</string>
     <string name="tv_most_select">最多只能选3个保险公司</string>
+
+    <string name="mustUpload">(必须传)</string>
 </resources>

@@ -48,6 +48,45 @@
                 android:paddingBottom="10dp"
                 >
             </android.support.v7.widget.RecyclerView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_gray"></View>
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="6dp">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="2dp"
+                    android:layout_height="20dp"
+                    android:background="@color/bg_orig"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:text="上传证件图片"/>
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/recyclerAgentUploadId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_photo"
+                android:text="ll"/>
 
         </LinearLayout>
     </ScrollView>

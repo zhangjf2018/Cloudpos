@@ -135,4 +135,5 @@
 
     <color name="bg_orig">#FFFFA633</color>
     <color name="bg_line">#FF7B5018</color>
+    <color name="default_bg">#FFE6E6E6</color>
 </resources>
