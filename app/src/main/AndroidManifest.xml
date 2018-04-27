@@ -27,7 +27,8 @@
         <activity
             android:name=".view.EffectInsuranceActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".view.SelectInsuranceAgentActivity"></activity>
+        <activity android:name=".view.SelectInsuranceAgentActivity" />
+        <activity android:name=".view.InsuranceAgentUploadPInfoActivity"></activity>
     </application>
 
 </manifest>

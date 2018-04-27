@@ -24,11 +24,12 @@ import com.ymt.cloudpos.model.PayWayModel;
 import com.ymt.cloudpos.model.RecommendServiceModel;
 import com.ymt.cloudpos.util.CommonUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SelectInsuranceAgentActivity extends BaseActivity {
+public class SelectInsuranceAgentActivity extends BaseActivity implements View.OnClickListener {
 
     private InsuranceAgentAdapter mInsuranceAgentAdapter;
     private List<InsuranceAgentModel> mInsuranceAgentModelList;
@@ -36,6 +37,7 @@ public class SelectInsuranceAgentActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolBarTitle("选择保险公司");
         mInsuranceAgentModelList= new ArrayList<>();
 
         setData();
@@ -51,6 +53,8 @@ public class SelectInsuranceAgentActivity extends BaseActivity {
             }
         });
         mHandler.postDelayed(r, 100);//延时100毫秒
+
+        findViewById(R.id.btn_next).setOnClickListener(this);
 
     }
     Handler mHandler = new Handler();
@@ -79,5 +83,21 @@ public class SelectInsuranceAgentActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_select_insurance_agent;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent();
+        intent.setClass(this,InsuranceAgentUploadPInfoActivity.class);
+        List<InsuranceAgentModel> p = new ArrayList<>();
+        for(InsuranceAgentModel model : mInsuranceAgentModelList){
+            if(model.isCheckOn()){
+                p.add(model);
+            }
+        }
+        Bundle args = new Bundle();
+        args.putSerializable("InsuranceAgentModel", (Serializable) p);
+        intent.putExtras(args);
+        startActivity(intent);
     }
 }

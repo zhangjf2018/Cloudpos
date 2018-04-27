@@ -1,12 +1,17 @@
 package com.ymt.cloudpos.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by zhangjifeng on 2018/4/26.
  * email : 414512194@qq.com
  * desc  :
  */
 
-public class InsuranceAgentModel {
+public class InsuranceAgentModel implements Serializable {
     private String name;
     private int resImgId;
     private boolean isCheckOn;
@@ -49,4 +54,5 @@ public class InsuranceAgentModel {
                 ", isCheckOn=" + isCheckOn +
                 '}';
     }
+
 }
