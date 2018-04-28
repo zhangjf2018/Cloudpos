@@ -2,16 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ymt.cloudpos">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".core.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".core.CustomApplication"
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.LaunchActivity"
@@ -33,13 +33,16 @@
             android:name=".view.EffectInsuranceActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".view.SelectInsuranceAgentActivity" />
-        <activity android:name=".view.InsuranceAgentUploadPInfoActivity"></activity>
-
-        <activity android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/customTheme"
-            />
-        <activity android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:theme="@style/customTheme"/>
+        <activity android:name=".view.InsuranceAgentUploadPInfoActivity" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/customTheme" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/customTheme" />
+        <activity android:name=".view.RenewalInsuranceActivity" />
+        <activity android:name=".view.RenewalInsuranceTypeActivity" />
+        <activity android:name=".view.LastYearsDangerActivity"></activity>
     </application>
 
 </manifest>

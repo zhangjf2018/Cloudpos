@@ -72,9 +72,14 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
             public void onItemClick(View view, int position) {
                // Toast.makeText(getContext(),""+position, Toast.LENGTH_SHORT).show();
                 CarServiceModel carServiceModel = mCarServiceModelList.get(position);
-                Intent intent = new Intent();
-                intent.setClass(getContext(), carServiceModel.getClassName());
-                startActivity(intent);
+                if(carServiceModel.getClassName()!=null){
+                    Intent intent = new Intent();
+                    intent.setClass(getContext(), carServiceModel.getClassName());
+                    startActivity(intent);
+                } else {
+                    showInfo("努力添加中...");
+                }
+
             }
         });
 
@@ -86,7 +91,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
     private void setData(){
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png2, "一键投保", EffectInsuranceActivity.class));
-        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_xubao, "一键续保"));
+        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_xubao, "一键续保", RenewalInsuranceActivity.class));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_lipei, "一键理赔"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_order, "订单跟进"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_car, "违章查询"));

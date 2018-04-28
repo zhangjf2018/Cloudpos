@@ -17,6 +17,7 @@ import es.dmoral.toasty.Toasty;
 public class CustomApplication extends Application {
 
     private static Application instance;
+    public static int mainCurrentFragmentPos;
 
     @Override
     public void onCreate() {

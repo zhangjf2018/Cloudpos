@@ -2,14 +2,9 @@ package com.ymt.cloudpos.view;
 
 import android.content.Intent;
 import android.databinding.BindingAdapter;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,18 +17,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ymt.cloudpos.MainActivity;
 import com.ymt.cloudpos.R;
-import com.ymt.cloudpos.adapter.InsuranceAgentAdapter;
 import com.ymt.cloudpos.adapter.InsuranceAgentUploadItemAdapter;
 import com.ymt.cloudpos.adapter.InsuranceSelectedAgentAdapter;
 import com.ymt.cloudpos.core.BaseActivity;
 import com.ymt.cloudpos.core.adaper.RecyclerBaseAdapter;
-import com.ymt.cloudpos.core.adaper.RecyclerViewDivider;
-import com.ymt.cloudpos.core.adaper.RecyclerViewHolder;
 import com.ymt.cloudpos.model.IdUploadModel;
 import com.ymt.cloudpos.model.InsuranceAgentModel;
 import com.ymt.cloudpos.test.PhotoAdapter;
-import com.ymt.cloudpos.test.RecyclerItemClickListener;
-import com.ymt.cloudpos.util.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,10 +32,9 @@ import java.util.List;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
 
-public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
+public class InsuranceAgentUploadPInfoActivity extends BaseActivity implements View.OnClickListener {
     private ArrayList<String> selectedPhotos = new ArrayList<>();
     private ArrayList<IdUploadModel> mIdUploadModelList = new ArrayList<>();
-    private PhotoAdapter photoAdapter;
     private InsuranceSelectedAgentAdapter mInsuranceSelectedAgentAdapter;
     private InsuranceAgentUploadItemAdapter insuranceAgentUploadItemAdapter;
     private int MAX=1;
@@ -128,6 +117,8 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
                 }
             }
         });
+
+        findViewById(R.id.btn_subOrder).setOnClickListener(this);
     }
 
     @BindingAdapter({"locPath"})
@@ -152,7 +143,9 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
 
             List<String> photos = null;
             if (data != null) {
+
                 photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+                Log.e("photos",photos.get(0));
                 if (photos.size()==0){
                     mIdUploadModelList.get(currentPos).setLocPath(null);
                 }else {
@@ -166,5 +159,42 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_insurance_agent_upload_pinfo;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_subOrder:
+                boolean flag = checkIdPhoto();
+                if(flag){
+                    goTo();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void goTo() {
+        showSuccess("订单已提交成功！");
+        Intent intent = new Intent(InsuranceAgentUploadPInfoActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    public boolean checkIdPhoto(){
+        boolean flag = true;
+
+        for(IdUploadModel model : mIdUploadModelList){
+            if (model.isMust()){
+                if(model.getLocPath() == null || "".equals(model.getLocPath())){
+                    showToastError("请选择 "+model.getName()+ " 照片");
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        return flag;
     }
 }

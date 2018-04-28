@@ -137,7 +137,6 @@
                 android:layout_height="80dp"
                 android:layout_gravity="top|left"
                 android:scrollHorizontally="false"
-                android:singleLine="false"
                 android:maxLines="3"
                 style="@style/edittext_style"
                 android:background="@drawable/rectangle_shape"/>

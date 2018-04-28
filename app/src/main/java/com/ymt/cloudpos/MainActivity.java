@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
+import com.ymt.cloudpos.core.CustomApplication;
 import com.ymt.cloudpos.observable.EventBadgeItem;
 import com.ymt.cloudpos.util.LoginStatus;
 import com.ymt.cloudpos.view.HomeFragment;
@@ -67,8 +68,24 @@ public class MainActivity extends AppCompatActivity implements Observer {
         for (BottomNavigationItem item : items) {
             mBottomNavigationBar.addItem(item);
         }
-        mBottomNavigationBar.setFirstSelectedPosition(0);
+        mBottomNavigationBar.setFirstSelectedPosition(CustomApplication.mainCurrentFragmentPos);
         mBottomNavigationBar.initialise();
+        mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                CustomApplication.mainCurrentFragmentPos = position;
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
+            }
+        });
     }
 
     /**
