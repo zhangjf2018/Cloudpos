@@ -10,9 +10,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -46,6 +50,10 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
     private InsuranceAgentUploadItemAdapter insuranceAgentUploadItemAdapter;
     private int MAX=1;
     private int currentPos;
+    private int MAXRequirementWords = 60;
+    private int countWords = 0;
+    private EditText etRequirement;
+    private TextView tvInputCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,43 +68,6 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
         mInsuranceSelectedAgentAdapter = new InsuranceSelectedAgentAdapter(insuranceAgentModelList);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(mInsuranceSelectedAgentAdapter);
-
-        findViewById(R.id.btn_photo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PhotoPicker.builder()
-                        .setPhotoCount(1)
-                        .setShowCamera(true)
-                        .setShowGif(true)
-                        .setPreviewEnabled(true)
-                        .start(InsuranceAgentUploadPInfoActivity.this, PhotoPicker.REQUEST_CODE);
-            }
-        });
-//
-//        RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.recycler_view);
-//        photoAdapter = new PhotoAdapter(this, selectedPhotos);
-//
-//        recyclerView2.setLayoutManager(new StaggeredGridLayoutManager(2, OrientationHelper.VERTICAL));
-//        recyclerView2.setAdapter(photoAdapter);
-//        recyclerView2.addOnItemTouchListener(new RecyclerItemClickListener(this,
-//                new RecyclerItemClickListener.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(View view, int position) {
-//                        if (photoAdapter.getItemViewType(position) == PhotoAdapter.TYPE_ADD) {
-//                            PhotoPicker.builder()
-//                                    .setPhotoCount(PhotoAdapter.MAX)
-//                                    .setShowCamera(true)
-//                                    .setPreviewEnabled(false)
-//                                    .setSelected(selectedPhotos)
-//                                    .start(InsuranceAgentUploadPInfoActivity.this);
-//                        } else {
-//                            PhotoPreview.builder()
-//                                    .setPhotos(selectedPhotos)
-//                                    .setCurrentItem(position)
-//                                    .start(InsuranceAgentUploadPInfoActivity.this);
-//                        }
-//                    }
-//                }));
 
         RecyclerView recyclerView3 = (RecyclerView) findViewById(R.id.recyclerAgentUploadId);
 
@@ -127,6 +98,33 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity {
                             .setPreviewEnabled(true)
                             .setSelected(selectedPhotos)
                             .start(InsuranceAgentUploadPInfoActivity.this);
+                }
+            }
+        });
+
+        tvInputCount = (TextView) findViewById(R.id.tv_inputCount);
+        tvInputCount.setText(countWords+"/"+MAXRequirementWords);
+        etRequirement = (EditText) findViewById(R.id.et_otherRequirement);
+        etRequirement.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                countWords = s.length();
+                tvInputCount.setText(countWords+"/"+MAXRequirementWords);
+                int editStart = etRequirement.getSelectionStart();
+                int editEnd = etRequirement.getSelectionEnd();
+                if (countWords > MAXRequirementWords) {
+                    s.delete(MAXRequirementWords, countWords);
+                    etRequirement.setText(s);
+                    etRequirement.setSelection(MAXRequirementWords);
                 }
             }
         });

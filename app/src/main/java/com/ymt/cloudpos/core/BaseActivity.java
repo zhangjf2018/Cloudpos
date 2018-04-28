@@ -1,5 +1,6 @@
 package com.ymt.cloudpos.core;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ymt.cloudpos.R;
+import com.ymt.cloudpos.util.CommonUtil;
 
 /**
  * Created by ai on 2018/4/14.
@@ -41,6 +43,19 @@ public abstract class BaseActivity extends AppCompatActivity  {
         if(tvNavTitle != null) {
             tvNavTitle.setText(title);
         }
+    }
+
+    public void showToast( String msg){
+        CommonUtil.showToast(this, msg);
+    }
+    public void showToastError( String msg){
+        CommonUtil.toastError(this, msg);
+    }
+    public void showSuccess( String msg){
+        CommonUtil.toastSuccess(this, msg);
+    }
+    public void showInfo( String msg){
+        CommonUtil.toastInfo(this, msg);
     }
 
     protected abstract int getLayoutId();

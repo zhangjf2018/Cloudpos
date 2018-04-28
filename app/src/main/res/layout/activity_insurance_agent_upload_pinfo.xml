@@ -76,18 +76,77 @@
             <android.support.v7.widget.RecyclerView
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:id="@+id/recyclerAgentUploadId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
-
-            <Button
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_gray"></View>
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_photo"
-                android:text="ll"/>
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="6dp">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="2dp"
+                    android:layout_height="20dp"
+                    android:background="@color/bg_orig"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:text="其他要求"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+                    <TextView
+                        android:layout_toLeftOf="@+id/tv_inputCount"
+                        android:layout_gravity="bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="文字数"/>
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:paddingLeft="5dp"
+                        android:id="@+id/tv_inputCount"
+                        android:layout_gravity="bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="0/100"/>
+                </RelativeLayout>
 
+            </LinearLayout>
+            <EditText
+                android:id="@+id/et_otherRequirement"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="80dp"
+                android:layout_gravity="top|left"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                android:maxLines="3"
+                style="@style/edittext_style"
+                android:background="@drawable/rectangle_shape"/>
+            <Button
+                android:id="@+id/btn_subOrder"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                style="@style/button_style"
+                android:text="@string/btn_sub_order"/>
         </LinearLayout>
     </ScrollView>
 

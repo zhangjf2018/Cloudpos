@@ -23,6 +23,15 @@ import java.util.List;
 public class InsuranceAgentAdapter extends RecyclerBaseAdapter<InsuranceAgentModel> {
 
     private List<InsuranceAgentModel> dataList;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     private int count;
 
     public InsuranceAgentAdapter(List<InsuranceAgentModel> mData) {

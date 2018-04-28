@@ -3,30 +3,21 @@ package com.ymt.cloudpos.view;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.ymt.cloudpos.R;
-import com.ymt.cloudpos.adapter.CarServiceAdapter;
 import com.ymt.cloudpos.adapter.InsuranceAgentAdapter;
-import com.ymt.cloudpos.adapter.RecommendServiceAdapter;
 import com.ymt.cloudpos.core.BaseActivity;
 import com.ymt.cloudpos.core.adaper.RecyclerBaseAdapter;
 import com.ymt.cloudpos.core.adaper.RecyclerViewDivider;
-import com.ymt.cloudpos.model.CarServiceModel;
 import com.ymt.cloudpos.model.InsuranceAgentModel;
-import com.ymt.cloudpos.model.PayWayModel;
-import com.ymt.cloudpos.model.RecommendServiceModel;
 import com.ymt.cloudpos.util.CommonUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SelectInsuranceAgentActivity extends BaseActivity implements View.OnClickListener {
@@ -95,6 +86,11 @@ public class SelectInsuranceAgentActivity extends BaseActivity implements View.O
                 p.add(model);
             }
         }
+        if (mInsuranceAgentAdapter.getCount() == 0 ) {
+            showToastError("请选择保险公司");
+            return;
+        }
+
         Bundle args = new Bundle();
         args.putSerializable("InsuranceAgentModel", (Serializable) p);
         intent.putExtras(args);
