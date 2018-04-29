@@ -42,7 +42,8 @@
             android:theme="@style/customTheme" />
         <activity android:name=".view.RenewalInsuranceActivity" />
         <activity android:name=".view.RenewalInsuranceTypeActivity" />
-        <activity android:name=".view.LastYearsDangerActivity"></activity>
+        <activity android:name=".view.LastYearsDangerActivity" />
+        <activity android:name=".view.ClaimSettlementActivity"></activity>
     </application>
 
 </manifest>

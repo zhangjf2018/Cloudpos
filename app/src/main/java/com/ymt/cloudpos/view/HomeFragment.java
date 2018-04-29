@@ -92,7 +92,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     private void setData(){
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png2, "一键投保", EffectInsuranceActivity.class));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_xubao, "一键续保", RenewalInsuranceActivity.class));
-        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_lipei, "一键理赔"));
+        mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_lipei, "一键理赔", ClaimSettlementActivity.class));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_order, "订单跟进"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_car, "违章查询"));
         mCarServiceModelList.add(new CarServiceModel(R.mipmap.png_year, "年审服务"));

@@ -21,6 +21,7 @@ import com.ymt.cloudpos.core.adaper.RecyclerViewDivider;
 import com.ymt.cloudpos.core.wegit.DialogBuilder;
 import com.ymt.cloudpos.model.PayWayModel;
 import com.ymt.cloudpos.util.CommonUtil;
+import com.ymt.cloudpos.util.LoginStatus;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class RentDepositActivity extends BaseActivity implements View.OnClickLis
                 .setSureOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        LoginStatus.saveLoginStatus(RentDepositActivity.this,"1");
                         Intent intent = new Intent();
                         intent.setClass(RentDepositActivity.this, MainActivity.class);
                         startActivity(intent);
