@@ -1,5 +1,6 @@
 package com.ymt.cloudpos.view;
 
+import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,6 +49,23 @@ public class MineFragment extends BaseFragment {
         recyclerView.setAdapter(mMineGridAdapter);
         recyclerView.addItemDecoration(new GridDividerItemDecoration(CommonUtil.dip2px(getContext(),2), ContextCompat.getColor(getContext(), R.color.bg_gray)));
 
+        view.findViewById(R.id.tv_withDrawCash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), WithDrawCashActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        view.findViewById(R.id.tv_payable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), OrdersPayableActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

@@ -24,6 +24,20 @@
                 android:text="账户验证"
                 android:textColor="@color/white"
                 android:textSize="26sp"/>
+            <TextView
+                android:id="@+id/tv_navRight"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_gravity="center_vertical|right"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:background="@drawable/backgroud_selector"
+                />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

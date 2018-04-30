@@ -22,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected final String TAG = this.getClass().getSimpleName();
     private Toolbar mToolbar;
     private TextView tvNavTitle;
+    private TextView tvNavRight;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,12 +38,24 @@ public abstract class BaseActivity extends AppCompatActivity  {
         mToolbar.setNavigationOnClickListener(new BackClickListenr());
 
         tvNavTitle = (TextView) findViewById(R.id.tv_navTitle);
+        tvNavRight = (TextView) findViewById(R.id.tv_navRight);
     }
 
     public void setToolBarTitle(CharSequence title) {
         if(tvNavTitle != null) {
             tvNavTitle.setText(title);
         }
+    }
+
+    public void setToolBarRight( CharSequence text){
+        if(tvNavRight != null) {
+            tvNavRight.setVisibility(View.VISIBLE);
+            tvNavRight.setText(text);
+        }
+    }
+
+    public void setToolBarRightOnclickListener(View.OnClickListener listener){
+        tvNavRight.setOnClickListener(listener);
     }
 
     public void showToast( String msg){

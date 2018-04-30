@@ -55,7 +55,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/cancel"
+                android:id="@+id/tv_withDrawCash"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1.0"
@@ -72,7 +72,7 @@
                 android:background="@color/white"
                  />
             <TextView
-                android:id="@+id/sure"
+                android:id="@+id/tv_payable"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1.0"

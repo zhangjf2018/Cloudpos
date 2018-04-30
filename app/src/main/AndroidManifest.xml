@@ -43,7 +43,12 @@
         <activity android:name=".view.RenewalInsuranceActivity" />
         <activity android:name=".view.RenewalInsuranceTypeActivity" />
         <activity android:name=".view.LastYearsDangerActivity" />
-        <activity android:name=".view.ClaimSettlementActivity"></activity>
+        <activity android:name=".view.ClaimSettlementActivity" />
+        <activity
+            android:name=".view.WithDrawCashActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.WithDrawCashDetailActivity" />
+        <activity android:name=".view.OrdersPayableActivity"></activity>
     </application>
 
 </manifest>
