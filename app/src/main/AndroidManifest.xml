@@ -48,7 +48,8 @@
             android:name=".view.WithDrawCashActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.WithDrawCashDetailActivity" />
-        <activity android:name=".view.OrdersPayableActivity"></activity>
+        <activity android:name=".view.OrdersPayableActivity" />
+        <activity android:name=".view.CustomServiceActivity"></activity>
     </application>
 
 </manifest>
