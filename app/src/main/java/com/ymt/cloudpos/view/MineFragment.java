@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,13 @@ import android.widget.ImageView;
 import com.ymt.cloudpos.R;
 import com.ymt.cloudpos.adapter.CarServiceAdapter;
 import com.ymt.cloudpos.adapter.MineGridAdapter;
+import com.ymt.cloudpos.adapter.MineOrderStatusAdapter;
 import com.ymt.cloudpos.core.BaseFragment;
 import com.ymt.cloudpos.core.adaper.GridDividerItemDecoration;
+import com.ymt.cloudpos.core.adaper.RecyclerBaseAdapter;
 import com.ymt.cloudpos.model.CarServiceModel;
 import com.ymt.cloudpos.model.MineGridModel;
+import com.ymt.cloudpos.model.MineOrderStatusModel;
 import com.ymt.cloudpos.util.CommonUtil;
 
 import java.util.ArrayList;
@@ -34,6 +38,9 @@ public class MineFragment extends BaseFragment {
 
     private MineGridAdapter mMineGridAdapter;
     private List<MineGridModel> mMineGridModelList;
+
+    private MineOrderStatusAdapter mMineOrderStatusAdapter;
+    private List<MineOrderStatusModel> mMineOrderStatusModelList;
 
     @Nullable
     @Override
@@ -67,7 +74,38 @@ public class MineFragment extends BaseFragment {
             }
         });
 
+        initOrderStatusView(view);
+
         return view;
+    }
+
+    private void initOrderStatusView(View view) {
+        mMineOrderStatusModelList = new ArrayList<>();
+        setOrderStatusData();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_OrderStatus);
+        mMineOrderStatusAdapter = new MineOrderStatusAdapter(mMineOrderStatusModelList);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setAdapter(mMineOrderStatusAdapter);
+        mMineOrderStatusAdapter.setMyItemClickListener(new RecyclerBaseAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MineOrderStatusModel m = mMineOrderStatusModelList.get(position);
+                if(m.getCls() !=null){
+                    Intent intent = new Intent();
+                    intent.setClass(getContext(), m.getCls());
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+    private void setOrderStatusData() {
+        mMineOrderStatusModelList.add(new MineOrderStatusModel(R.mipmap.sub_order, "已提交"));
+        mMineOrderStatusModelList.add(new MineOrderStatusModel(R.mipmap.genjin, "跟进中", OrdersGenJinActivity.class));
+        mMineOrderStatusModelList.add(new MineOrderStatusModel(R.mipmap.waitpay, "待支付"));
+        mMineOrderStatusModelList.add(new MineOrderStatusModel(R.mipmap.fin_order, "已完成"));
+        mMineOrderStatusModelList.add(new MineOrderStatusModel(R.mipmap.cancle_order, "已取消"));
     }
 
     private void setData(){

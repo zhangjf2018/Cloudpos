@@ -49,7 +49,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.WithDrawCashDetailActivity" />
         <activity android:name=".view.OrdersPayableActivity" />
-        <activity android:name=".view.CustomServiceActivity"></activity>
+        <activity android:name=".view.CustomServiceActivity" />
+        <activity android:name=".view.OrdersGenJinActivity" />
+        <activity android:name=".view.OrderDetailActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
     </application>
 
 </manifest>

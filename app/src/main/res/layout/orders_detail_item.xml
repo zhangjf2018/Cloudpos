@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="orderDetailTypeModel"
+            type="com.ymt.cloudpos.model.OrderDetailTypeModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="10dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="130dp"
+            android:scaleType="fitXY"
+            android:layout_height="70dp"
+            android:src="@drawable/s7"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="平安保险"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="总价:"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="8888.88"/>
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="元"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <CheckBox
+            android:layout_toLeftOf="@+id/tv_select"
+            android:id="@+id/cb_isCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/checkbox_selector_re"
+            android:paddingLeft="3dp"
+            android:button="@null"/>
+    </LinearLayout>
+
+</LinearLayout>
+</layout>
