@@ -59,7 +59,8 @@
         <activity android:name=".view.SubAccountAddActivity" />
         <activity android:name=".view.SubAccountDetailActivity" />
         <activity android:name=".view.MinePersonInfoActivity" />
-        <activity android:name=".view.SettingActivity"></activity>
+        <activity android:name=".view.SettingActivity" />
+        <activity android:name=".view.MineModifyPasswordActivity"></activity>
     </application>
 
 </manifest>

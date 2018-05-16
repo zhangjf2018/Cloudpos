@@ -7,6 +7,50 @@
     android:orientation="vertical"
     tools:context="com.ymt.cloudpos.view.SettingActivity">
     <include layout="@layout/top_nav_include" />
+    <LinearLayout
+        android:id="@+id/ll_modifyPasswd"
+        android:background="@drawable/item_selector_white"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:text="修改密码"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/iv_arrRight"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@mipmap/arr_rigth"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_logOut"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/item_selector_white"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="@color/red"
+            android:text="退出登录"/>
+    </LinearLayout>
 
 
 </LinearLayout>
