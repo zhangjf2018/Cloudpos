@@ -51,8 +51,15 @@
         <activity android:name=".view.OrdersPayableActivity" />
         <activity android:name=".view.CustomServiceActivity" />
         <activity android:name=".view.OrdersGenJinActivity" />
-        <activity android:name=".view.OrderDetailActivity"
+        <activity
+            android:name=".view.OrderDetailActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".view.RenewalInsuranceNoticeActivity" />
+        <activity android:name=".view.SubAccountActivity" />
+        <activity android:name=".view.SubAccountAddActivity" />
+        <activity android:name=".view.SubAccountDetailActivity" />
+        <activity android:name=".view.MinePersonInfoActivity" />
+        <activity android:name=".view.SettingActivity"></activity>
     </application>
 
 </manifest>

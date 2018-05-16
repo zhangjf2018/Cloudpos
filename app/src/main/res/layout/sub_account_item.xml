@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="subAccountModel"
+            type="com.ymt.cloudpos.model.SubAccountModel" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/item_selector"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_subAccName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="罗娜额度"/>
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/tv_subAccTel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="18899996666"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_arrRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:textSize="19sp"
+        android:textColor="@color/btn_bg_green"
+        android:text="正常"/>
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:id="@+id/iv_arrRight"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="3dp"
+        android:src="@mipmap/arr_rigth"
+        />
+</RelativeLayout>
+</layout>

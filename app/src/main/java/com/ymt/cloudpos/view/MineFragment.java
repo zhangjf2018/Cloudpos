@@ -55,6 +55,17 @@ public class MineFragment extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(mMineGridAdapter);
         recyclerView.addItemDecoration(new GridDividerItemDecoration(CommonUtil.dip2px(getContext(),2), ContextCompat.getColor(getContext(), R.color.bg_gray)));
+        mMineGridAdapter.setMyItemClickListener(new RecyclerBaseAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MineGridModel m = mMineGridModelList.get(position);
+                if(m.getTargetCls() !=null){
+                    Intent intent = new Intent();
+                    intent.setClass(getContext(), m.getTargetCls());
+                    startActivity(intent);
+                }
+            }
+        });
 
         view.findViewById(R.id.tv_withDrawCash).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,12 +120,12 @@ public class MineFragment extends BaseFragment {
     }
 
     private void setData(){
-        mMineGridModelList.add(new MineGridModel(R.mipmap.personal, "个人资料"));
-        mMineGridModelList.add(new MineGridModel(R.mipmap.time, "续保通知"));
+        mMineGridModelList.add(new MineGridModel(R.mipmap.personal, "个人资料", MinePersonInfoActivity.class));
+        mMineGridModelList.add(new MineGridModel(R.mipmap.time, "续保通知", RenewalInsuranceNoticeActivity.class));
         mMineGridModelList.add(new MineGridModel(R.mipmap.pay_rent, "租金支付"));
-        mMineGridModelList.add(new MineGridModel(R.mipmap.custom_service, "客户服务"));
-        mMineGridModelList.add(new MineGridModel(R.mipmap.sub_account, "子账号管理"));
-        mMineGridModelList.add(new MineGridModel(R.mipmap.settings, "设置"));
+        mMineGridModelList.add(new MineGridModel(R.mipmap.custom_service, "客户服务", CustomServiceActivity.class));
+        mMineGridModelList.add(new MineGridModel(R.mipmap.sub_account, "子账号管理", SubAccountActivity.class ));
+        mMineGridModelList.add(new MineGridModel(R.mipmap.settings, "设置", SettingActivity.class));
 
     }
 

@@ -20,6 +20,7 @@
     <string name="btn_login">登录</string>
     <string name="btn_pay_now">立即支付</string>
     <string name="btn_sub_order">提交订单</string>
+    <string name="btn_confirm">确认</string>
     <string name="btn_next_step">下一步</string>
     <string name="btn_confirm_withdrawcash">确认提现</string>
     <string name="btn_pay">去支付</string>
