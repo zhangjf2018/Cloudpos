@@ -1,11 +1,10 @@
 package com.ymt.cloudpos.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.suke.widget.SwitchButton;
 import com.ymt.cloudpos.R;
 import com.ymt.cloudpos.core.BaseActivity;
-import com.ymt.cloudpos.model.OrdersGenJinModel;
 import com.ymt.cloudpos.model.SubAccountModel;
 
 public class SubAccountDetailActivity extends BaseActivity {
@@ -17,6 +16,8 @@ public class SubAccountDetailActivity extends BaseActivity {
 
         Bundle bundle = getIntent().getExtras();
         final SubAccountModel subAccountModel = (SubAccountModel) bundle.getSerializable("SubAccountModel");
+        SwitchButton sbAcountStatus = (SwitchButton) findViewById(R.id.sb_accountStatus);
+
     }
 
     @Override
