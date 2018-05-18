@@ -28,17 +28,19 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        mToolbar = (Toolbar) findViewById(R.id.nav_toolbar);
-        setSupportActionBar(mToolbar);
-        ActionBar actionBar =  getSupportActionBar();
-        if(actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
-        mToolbar.setNavigationOnClickListener(new BackClickListenr());
-
+        initToolBar();
         tvNavTitle = (TextView) findViewById(R.id.tv_navTitle);
         tvNavRight = (TextView) findViewById(R.id.tv_navRight);
+    }
+
+    private void initToolBar(){
+        mToolbar = (Toolbar) findViewById(R.id.nav_toolbar);
+        if(mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            mToolbar.setNavigationOnClickListener(new BackClickListenr());
+        }
     }
 
     public void setToolBarTitle(CharSequence title) {

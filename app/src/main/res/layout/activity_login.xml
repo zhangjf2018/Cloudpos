@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="userInfo" type="com.ymt.cloudpos.model.UserInfo" />
+        <import type="android.view.View" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     >
-
     <LinearLayout
       android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,21 +40,37 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:orientation="horizontal"
             android:background="@drawable/bg_edittext">
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@mipmap/pic_people"/>
-            <EditText
-                android:layout_marginLeft="10dp"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/login_acc"
-                android:inputType="number"
-                android:maxLength="15"
-                android:maxLines="1"
-                style="@style/edittext_style"/>
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/login_acc"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:text="@={userInfo.acc}"
+                    style="@style/edittext_style"/>
+                <ImageView
+                    android:id="@+id/iv_accDelete"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="22dp"
+                    android:layout_height="50dp"
+                    android:onClick="@{userInfo::accClear}"
+                    android:visibility="@{userInfo.accDeleteVisible}"
+                    android:src="@mipmap/delete"/>
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -67,16 +87,32 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@mipmap/pic_pass"/>
-            <EditText
-                android:layout_marginLeft="10dp"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/login_passwd"
-                android:inputType="textPassword"
-                android:maxLength="15"
-                android:maxLines="1"
-                style="@style/edittext_style"
-                />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_loginPassword"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/login_passwd"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
+                    android:maxLines="1"
+                    android:text="@={userInfo.password}"
+                    style="@style/edittext_style"
+                    />
+                <ImageView
+                    android:id="@+id/iv_passwordDelete"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="22dp"
+                    android:layout_height="50dp"
+                    android:onClick="@{userInfo::passwordClear}"
+                    android:visibility="@{userInfo.passwordDeleteVisible}"
+                    android:src="@mipmap/delete"/>
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -105,3 +141,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</layout>

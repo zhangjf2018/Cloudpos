@@ -1,5 +1,6 @@
 package com.ymt.cloudpos.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -52,7 +54,7 @@ public class RentDepositActivity extends BaseActivity implements View.OnClickLis
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(mPayWayAdapter);
         recyclerView.addItemDecoration( new RecyclerViewDivider(this, LinearLayoutManager.HORIZONTAL, CommonUtil.dip2px(this,1), ContextCompat.getColor(this, R.color.alpaha_gray)) );
-        mHandler.postDelayed(r, 100);
+      //  mHandler.postDelayed(r, 100);
     }
 
     Handler mHandler = new Handler();
@@ -80,7 +82,24 @@ public class RentDepositActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        new DialogBuilder(RentDepositActivity.this)
+
+        ProgressDialog progressDialog = new ProgressDialog(RentDepositActivity.this, R.style.dialog);//1.创建一个ProgressDialog的实例
+       // ProgressDialog progressDialog = new ProgressDialog(RentDepositActivity.this);//1.创建一个ProgressDialog的实例
+        //progressDialog.setTitle("这是一个 progressDialog");//2.设置标题
+        progressDialog.setMessage("正在加载中，请稍等......");//3.设置显示内容
+        progressDialog.setMessage("正在加载中");//3.设置显示内容
+        progressDialog.setCancelable(true);//4.设置可否用back键关闭对话框
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+       // progressDialog.setCanceledOnTouchOutside(false);// 设置在点击Dialog外是否取消Dialog进度条
+        progressDialog.show();//5.将ProgessDialog显示出来
+
+//        WindowManager.LayoutParams params = progressDialog.getWindow().getAttributes();
+//        params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+//        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        progressDialog.getWindow().setAttributes(params);
+
+
+      /*  new DialogBuilder(RentDepositActivity.this)
                 .title("恭喜您！")
                 .message("支付成功！祝您使用愉快！")
                 .sureText("确定")
@@ -94,7 +113,7 @@ public class RentDepositActivity extends BaseActivity implements View.OnClickLis
                         intent.setClass(RentDepositActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
-                }).build().show();
+                }).build().show();*/
     }
 
     @BindingAdapter({"resImgId"})
