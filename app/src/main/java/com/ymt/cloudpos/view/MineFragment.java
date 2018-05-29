@@ -63,6 +63,8 @@ public class MineFragment extends BaseFragment {
                     Intent intent = new Intent();
                     intent.setClass(getContext(), m.getTargetCls());
                     startActivity(intent);
+                }else {
+                    showInfo("努力添加中...");
                 }
             }
         });
@@ -106,6 +108,8 @@ public class MineFragment extends BaseFragment {
                     Intent intent = new Intent();
                     intent.setClass(getContext(), m.getCls());
                     startActivity(intent);
+                }else {
+                    showInfo("努力添加中...");
                 }
             }
         });

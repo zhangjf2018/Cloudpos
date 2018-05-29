@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });*/
 
-                RetrofitService service = RetrofitTool.getInstance().getRetrofit().create(RetrofitService.class);
+                /*RetrofitService service = RetrofitTool.getInstance().getRetrofit().create(RetrofitService.class);
                 Call<SResp> call =  service.postQuery("biz=1231&name=张是打发");
                 call.enqueue(new Callback<SResp>() {
                     @Override
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onFailure(Call<SResp> call, Throwable t) {
                         Log.e("Throwable", t.getMessage());
                     }
-                });
+                });*/
 
                 Log.e("000",binding.getUserInfo().toString());
                 intent.setClass(LoginActivity.this, RentDepositActivity.class);

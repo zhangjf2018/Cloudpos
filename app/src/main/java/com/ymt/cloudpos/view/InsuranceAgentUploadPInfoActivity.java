@@ -145,7 +145,6 @@ public class InsuranceAgentUploadPInfoActivity extends BaseActivity implements V
             if (data != null) {
 
                 photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
-                Log.e("photos",photos.get(0));
                 if (photos.size()==0){
                     mIdUploadModelList.get(currentPos).setLocPath(null);
                 }else {
